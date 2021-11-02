@@ -1,0 +1,78 @@
+<html style="font-family: sans-serif;">
+<body>
+<h1>string checker</h1>
+<input id="first" placeholder="Enter first string here">
+<input id="second" placeholder="Enter second string here">
+<div><p>Result: </p><p id="result"></p><p id="difference"></p><p id="difference2"></p><fieldset><legend>Difference</legend><p id="difference3"></p></fieldset>
+<script>
+var f = document.getElementById("first");
+var s = document.getElementById("second");
+var p = document.getElementById("result");
+var d1 = document.getElementById("difference");
+var d2 = document.getElementById("difference2");
+var d3 = document.getElementById("difference3");
+
+function findDiff(str1, str2){ 
+  let diff= "";
+  str2.split('').forEach(function(val, i){
+    if (val != str1.charAt(i))
+      diff += val ;         
+  });
+  return diff;
+}
+function checknow() {
+if(f.value == s.value) {
+p.style.color = "lime";
+p.innerHTML = "Match";
+p.style.fontWeight = "bold";
+d1.innerHTML = "String One: " + f.value;
+d2.innerHTML = "String Two: " + s.value;
+d1.style.color = "lime";
+d2.style.color = "lime";
+d3.innerHTML = "";
+}
+else {
+p.style.color = "red";
+p.innerHTML = "Not Matched";
+p.style.fontWeight = "normal";
+d1.innerHTML = "String One: " + f.value;
+d1.style.color = "black";
+d2.style.color = "black";
+d2.innerHTML = "String Two: " + s.value;
+let diff = findDiff(f.value,s.value);
+d3.innerHTML = diff;
+}
+}
+setInterval(checknow, 1);
+</script>
+<style>
+input {
+	width: 300px;
+	height: 50px;
+	border-radius: 100px;
+	border-color: lightgray;
+	border-style: solid;
+	transition-duration: 0.1s;
+	font-weight: bold;
+	font-size: 27px;
+}
+input#first {
+	outline-color: blue;
+}
+input#second {
+	outline-color: red;
+	width: 340px;
+}
+input#first:hover {
+	border-color: blue;
+}
+input#second:hover {
+	border-color: red;
+}
+input:hover {
+	background-color: lightgray;
+}
+input:active {
+	background-color: gray;
+}
+</style>
